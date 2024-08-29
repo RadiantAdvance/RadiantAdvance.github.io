@@ -1,0 +1,41 @@
+{
+    "socialLinks": [
+        {
+            "name": "Twitter",
+            "url": "https://twitter.com/neonsomble",
+            "iconClass": "fab fa-twitter",
+            "title": "Follow me on Twitter"
+        },
+        {
+            "name": "Mastodon",
+            "url": "https://mograph.social/@neonsomble",
+            "iconClass": "fab fa-mastodon",
+            "title": "Follow me on Mastodon"
+        },
+        {
+            "name": "YouTube",
+            "url": "https://www.youtube.com/@Neonsomble",
+            "iconClass": "fab fa-youtube",
+            "title": "Subscribe to my YouTube channel"
+        },
+        {
+            "name": "Twitch",
+            "url": "https://www.twitch.tv/neonsomble",
+            "iconClass": "fab fa-twitch",
+            "title": "Watch me on Twitch"
+        },
+        {
+            "name": "Instagram",
+            "url": "https://www.instagram.com/neonsomble",
+            "iconClass": "fab fa-instagram",
+            "title": "Follow me on Instagram"
+        },
+        {
+            "name": "Cara",
+            "url": "https://cara.app/neonsomble",
+            "iconClass": "custom-icon",
+            "iconPath": "Social_Icons/Cara.png",
+            "title": "Visit me on Cara"
+        }
+    ]
+}
