@@ -20,7 +20,7 @@
 <body>
     <div class="container">
         <div class="profile-section">
-            <img src="./profile.png" alt="Neonsomble Profile Picture" class="profile-pic">
+            <img src="profile.png" alt="Neonsomble Profile Picture" class="profile-pic">
             <h1>Neonsomble</h1>
             <p>Welcome to Neonsomble's link page. See what I'm up to.</p>
         </div>
@@ -35,7 +35,7 @@
     </footer>
 
     <script>
-        fetch('./social_links.json')
+        fetch('social_links.json')
             .then(response => response.json())
             .then(data => {
                 const linkGrid = document.getElementById('link-grid');
