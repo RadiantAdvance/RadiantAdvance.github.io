@@ -34,7 +34,7 @@
             "name": "Cara",
             "url": "https://cara.app/neonsomble",
             "iconClass": "custom-icon",
-            "iconPath": "Social_Icons/Cara.png",
+            "iconPath": "./Social_Icons/Cara.png",
             "title": "Visit me on Cara"
         }
     ]
