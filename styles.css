@@ -30,7 +30,7 @@ body {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 3px solid #fff;
+    border: 1px solid #fff;
 }
 
 h1 {
@@ -174,4 +174,28 @@ p {
     max-width: 90%;
     max-height: 90%;
     border-radius: 8px;
+}
+
+/* navbar */
+
+nav {
+    width: 100%;
+    text-align: center;
+}
+
+.navbar {
+    list-style-type: none;
+    display: inline-flex;
+    gap: 2rem;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    transition: text-shadow 0.3s ease;
+}
+
+.navbar li a:hover {
+    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.9);
 }
