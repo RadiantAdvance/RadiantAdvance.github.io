@@ -1,8 +1,8 @@
 const imageList = [
-    '../media/art/art1.jpg',
-    '../media/art/art2.jpg',
-    '../media/art/art3.jpg',
-    '../media/art/art4.jpg',
+    '../media/gallery/art1.png',
+    '../media/gallery/art2.jpg',
+    '../media/gallery/art3.jpg',
+    '../media/gallery/art4.jpg',
     // Add more images as needed
 ];
 
