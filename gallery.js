@@ -1,5 +1,5 @@
 const imageList = [
-    '/media/art1.jpg',
+    '../docs/assets/images/art1.jpg',
     // Add more images as needed
 ];
 
