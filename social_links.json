@@ -30,12 +30,7 @@
             "url": "https://www.twitch.tv/neonsomble",
             "iconClass": "fab fa-twitch",
             "title": "Watch me on Twitch"
-        },
-        {
-            "name": "Instagram",
-            "url": "https://www.instagram.com/neonsomble",
-            "iconClass": "fab fa-instagram",
-            "title": "Follow me on Instagram"
-        },
+        }
+
     ]
 }
