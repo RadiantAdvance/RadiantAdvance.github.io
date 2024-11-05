@@ -6,6 +6,13 @@
             "iconClass": "fab fa-twitter",
             "title": "Follow me on Twitter"
         },
+                {
+            "name": "Bluesky",
+            "url": "https://bsky.app/profile/neonsomble.com",
+            "iconClass": "custom-icon",
+            "iconPath": "../bluesky.png",
+            "title": "Follow me on Bluesky"
+        },
         {
             "name": "Mastodon",
             "url": "https://mograph.social/@neonsomble",
