@@ -37,12 +37,5 @@
             "iconClass": "fab fa-instagram",
             "title": "Follow me on Instagram"
         },
-        {
-            "name": "Cara",
-            "url": "https://cara.app/neonsomble",
-            "iconClass": "custom-icon",
-            "iconPath": "../cara.webp",
-            "title": "Visit me on Cara"
-        }
     ]
 }
