@@ -212,3 +212,12 @@ nav {
     border-bottom: 2px solid white; /* White underline for active page */
 }
 /*navbar finish*/
+
+
+.type-logo {
+    display: block;
+    height: 2em; /* Similar to font-size for h1 */
+    margin: 10px auto 5px; /* Center and add spacing */
+    width: auto;
+    /* Additional styling if needed */
+}
