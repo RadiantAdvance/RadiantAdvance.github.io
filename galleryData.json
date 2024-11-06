@@ -27,6 +27,18 @@
                     "src": "../docs/assets/images/art4.jpg",
                     "alt": "2D Illustration 4",
                     "link": "https://example.com/art4"
+                },
+                {
+                    "mediaType": "image",
+                    "src": "../docs/assets/images/art5.jpg",
+                    "alt": "2D Illustration 5",
+                    "link": "https://example.com/art4"
+                },
+                {
+                    "mediaType": "image",
+                    "src": "../docs/assets/images/art6.jpg",
+                    "alt": "2D Illustration 6",
+                    "link": "https://example.com/art4"
                 }
             ]
         },
