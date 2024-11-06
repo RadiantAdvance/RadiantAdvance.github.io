@@ -1,0 +1,72 @@
+{
+    "galleries": [
+        {
+            "category": "2D Illustrations",
+            "displayMode": "grid",  
+            "items": [
+                {
+                    "mediaType": "image",
+                    "src": "docs/assets/images/art1.jpg",
+                    "alt": "2D Illustration 1",
+                    "link": "https://example.com/art2.jpg"
+                },
+                {
+                    "mediaType": "image",
+                    "src": "docs/assets/images/2d_art2.jpg",
+                    "alt": "2D Illustration 2",
+                    "link": "https://example.com/2d_art2"
+                }
+            ]
+        },
+        {
+            "category": "3D Renders",
+            "displayMode": "grid",  
+            "items": [
+                {
+                    "mediaType": "image",
+                    "src": "docs/assets/images/art3.jpg",
+                    "alt": "3D Render 1",
+                    "link": "https://example.com/3d_render1"
+                },
+                {
+                    "mediaType": "image",
+                    "src": "docs/assets/images/art4.jpg",
+                    "alt": "3D Render 2",
+                    "link": "https://example.com/3d_render2"
+                }
+            ]
+        },
+        {
+            "category": "SoundCloud Music",
+            "displayMode": "list",  
+            "items": [
+                {
+                    "mediaType": "audio",
+                    "trackUrl": "https://soundcloud.com/neonsomble/no-time-to-waste",
+                    "title": "Track 1"
+                },
+                {
+                    "mediaType": "audio",
+                    "trackUrl": "https://soundcloud.com/artist/song2",
+                    "title": "Track 2"
+                }
+            ]
+        },
+        {
+            "category": "YouTube Videos",
+            "displayMode": "carousel",  
+            "items": [
+                {
+                    "mediaType": "video",
+                    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                    "title": "Video 1"
+                },
+                {
+                    "mediaType": "video",
+                    "videoUrl": "https://www.youtube.com/embed/YzlgJY4JxaQ",
+                    "title": "Video 2"
+                }
+            ]
+        }
+    ]
+}

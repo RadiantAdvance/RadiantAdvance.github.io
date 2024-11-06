@@ -1,6 +1,6 @@
+/* Body Styling */
 body {
     background-color: #121212;
-    /*background-image: url('background.webp');*/
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -14,6 +14,7 @@ body {
     margin: 0;
 }
 
+/* Container Layout */
 .container {
     text-align: center;
     flex-grow: 1;
@@ -22,9 +23,9 @@ body {
     justify-content: center;
 }
 
+/* Profile Section */
 .profile-section {
     margin-bottom: 20px;
-    
 }
 
 .profile-pic {
@@ -44,11 +45,13 @@ p {
     margin: 0;
 }
 
+/* Social Links Grid */
 .link-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive grid */
     gap: 15px;
     margin-top: 30px;
+    padding: 0 20px; /* Add some padding for better spacing */
 }
 
 .link-item {
@@ -69,18 +72,14 @@ p {
     color: #fff; /* Icon color */
 }
 
+.link-item img {
+    width: 40px; /* Set image size for custom icons */
+    height: 40px;
+    object-fit: contain;
+}
+
 .link-item:hover {
     background-color: rgba(50, 50, 50, 0.9); /* Slightly lighter background on hover */
-    transform: scale(1.05);
-}
-
-/* Custom Icon Styling */
-.custom-icon {
-    width: 40px;
-    height: 40px;
-}
-
-.link-item:hover .custom-icon {
     transform: scale(1.05);
 }
 
@@ -126,7 +125,7 @@ p {
     text-decoration: underline;
 }
 
-/* Portfolio styling */
+/* Portfolio Styling */
 .portfolio {
     width: 90%;
     max-width: 1200px;
@@ -136,12 +135,21 @@ p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Image grid */
+/* Example styles for grid, list, and carousel layouts */
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.list {
+    display: block;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
 }
 
 .grid img {
@@ -156,7 +164,7 @@ p {
     transform: scale(1.05);
 }
 
-/* Modal styling for enlarged image view */
+/* Modal Styling for Enlarged Image View */
 .modal {
     display: none;
     position: fixed;
@@ -176,8 +184,7 @@ p {
     border-radius: 8px;
 }
 
-/* navbar */
-
+/* Navbar Styling */
 nav {
     width: 100%;
     text-align: center;
@@ -190,16 +197,13 @@ nav {
 }
 
 .navbar a {
-    text-decoration: none;          /* Remove default underline */
-    color: inherit;                 /* Keep link color as is */
-    padding-bottom: 5px;            /* Space for the custom underline */
+    text-decoration: none; /* Remove default underline */
+    color: inherit; /* Keep link color as is */
+    padding-bottom: 5px; /* Space for the custom underline */
     transition: border-bottom 0.3s; /* Smooth transition */
 }
 
-
 .navbar li a {
-    text-decoration: none;
-    color: white;
     font-size: 1.2rem;
     transition: text-shadow 0.3s ease;
 }
@@ -211,13 +215,59 @@ nav {
 .navbar a.active {
     border-bottom: 2px solid white; /* White underline for active page */
 }
-/*navbar finish*/
 
-
+/* Type Logo */
 .type-logo {
     display: block;
     height: 2em; /* Similar to font-size for h1 */
     margin: 10px auto 5px; /* Center and add spacing */
     width: auto;
-    /* Additional styling if needed */
+}
+
+/* Tab Buttons Styling */
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.tab-buttons button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    background-color: #000; /* Inactive state background */
+    color: #fff; /* Inactive state text color */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tab-buttons button.active {
+    background-color: #fff; /* Active state background */
+    color: #000; /* Active state text color */
+    border: 1px solid #000; /* Active state border */
+}
+
+/* Music Gallery Styling */
+.music-grid {
+    display: flex;
+    flex-direction: column; /* Stack the items vertically */
+    align-items: center;    /* Center the items horizontally */
+    gap: 20px;              /* Add space between items */
+    justify-content: center;
+    margin: 0;
+    width: 100%;            /* Ensure the grid takes up full width */
+}
+
+/* SoundCloud Iframe Wrapper Styling */
+.soundcloud-iframe-wrapper {
+    width: 100%;            /* Ensure wrapper takes up full width */
+    max-width: 1200px;      /* Control maximum width for each embed */
+    margin: 20px 0;         /* Add spacing between embeds */
+    text-align: center;     /* Center the iframe inside the wrapper */
+}
+
+.soundcloud-iframe-wrapper iframe {
+    width: 100%;            /* Full width of the wrapper */
+    height: 200px;          /* Set a consistent height */
+    border: none;           /* No border for iframe */
 }
