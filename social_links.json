@@ -30,6 +30,13 @@
             "url": "https://www.twitch.tv/neonsomble",
             "iconClass": "fab fa-twitch",
             "title": "Watch me on Twitch"
+        },
+        {
+            "name": "Soundcloud",
+            "url": "https://soundcloud.com/neonsomble",
+            "iconClass": "custom-icon",
+            "iconPath": "../soundcloud.webp",
+            "title": "Follow me on Soundcloud"
         }
     ]
 }
