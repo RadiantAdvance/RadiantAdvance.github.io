@@ -3,14 +3,13 @@
         {
             "name": "X",
             "url": "https://twitter.com/neonsomble",
-            "iconClass": "fab fa-X-twitter",
+            "iconClass": "fa-brands fa-x-twitter",
             "title": "Follow me on X"
         },
                 {
             "name": "Bluesky",
             "url": "https://bsky.app/profile/neonsomble.com",
-            "iconClass": "custom-icon",
-            "iconPath": "../Icons/Bluesky.webp",
+            "iconClass": "fa-brands fa-bluesky",
             "title": "Follow me on Bluesky"
         },
         {
@@ -34,8 +33,7 @@
         {
             "name": "Soundcloud",
             "url": "https://soundcloud.com/neonsomble",
-            "iconClass": "custom-icon",
-            "iconPath": "../Icons/Bluesky.webp",
+            "iconClass": "fa-brands fa-soundcloud",
             "title": "Follow me on Soundcloud"
         }
     ]
