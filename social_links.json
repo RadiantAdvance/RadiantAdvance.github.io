@@ -10,7 +10,7 @@
             "name": "Bluesky",
             "url": "https://bsky.app/profile/neonsomble.com",
             "iconClass": "custom-icon",
-            "iconPath": "../icons/Bluesky.webp",
+            "iconPath": "../Icons/Bluesky.webp",
             "title": "Follow me on Bluesky"
         },
         {
@@ -35,7 +35,7 @@
             "name": "Soundcloud",
             "url": "https://soundcloud.com/neonsomble",
             "iconClass": "custom-icon",
-            "iconPath": "../icons/soundcloud.webp",
+            "iconPath": "../Icons/Bluesky.webp",
             "title": "Follow me on Soundcloud"
         }
     ]
