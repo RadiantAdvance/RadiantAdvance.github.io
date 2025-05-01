@@ -9,7 +9,8 @@
                 {
             "name": "Bluesky",
             "url": "https://bsky.app/profile/neonsomble.com",
-            "iconClass": "fab fa-bluesky",
+            "iconClass": "custom-icon",
+            "iconPath": "../Bluesky.webp",
             "title": "Follow me on Bluesky"
         },
         {
