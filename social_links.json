@@ -3,13 +3,13 @@
         {
             "name": "X",
             "url": "https://twitter.com/neonsomble",
-            "iconClass": "fa-brands fa-x-twitter",
+            "iconClass": "fab fa-x-twitter",
             "title": "Follow me on X"
         },
                 {
             "name": "Bluesky",
             "url": "https://bsky.app/profile/neonsomble.com",
-            "iconClass": "fa-brands fa-bluesky",
+            "iconClass": "fab fa-bluesky",
             "title": "Follow me on Bluesky"
         },
         {
@@ -33,7 +33,7 @@
         {
             "name": "Soundcloud",
             "url": "https://soundcloud.com/neonsomble",
-            "iconClass": "fa-brands fa-soundcloud",
+            "iconClass": "fab fa-soundcloud",
             "title": "Follow me on Soundcloud"
         }
     ]
