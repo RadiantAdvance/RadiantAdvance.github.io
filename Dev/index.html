@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Links - Neonsomble</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Welcome to Neonsomble's link page. Connect with me on various platforms and see what I'm up to.">
+    <meta name="keywords" content="Neonsomble, social media, links, Twitter, Mastodon, YouTube, Twitch, Instagram, Cara">
+    <meta name="author" content="Neonsomble">
+    <meta property="og:title" content="Neonsomble Links">
+    <meta property="og:description" content="Welcome to Neonsomble's link page. Connect with me on various platforms.">
+    <meta property="og:image" content="./profile.jpg"> <!-- Update with a relevant image URL -->
+    <meta property="og:url" content="./index.html"> <!-- Relative URL for GitHub Pages -->
+
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-section">
+            <img src="../profile.webp" alt="Neonsomble Profile Picture" class="profile-pic">
+            <img src="../docs/assets/images/TypeLogo.png" alt="Neonsomble" class="type-logo">
+            <p>Welcome to Neonsomble's link page. See what I'm up to.</p>
+        </div>
+        <nav>
+            <ul class="navbar">
+                <li><a href="index.html" class="active"><i class="fas fa-link"></i> Links</a></li>
+                <li><a href="Portfolio.html"><i class="fas fa-image"></i> Portfolio</a></li>
+            </ul>
+        </nav>        
+        <div id="link-grid" class="link-grid">
+            <!-- Social Icons will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Neonsomble. All rights reserved.</p>
+        <p>Contact: <a href="mailto:contact@neonsomble.com">contact@neonsomble.com</a></p>
+    </footer>
+    <script>
+        fetch('social_links.json')
+            .then(response => response.json())
+            .then(data => {
+                const linkGrid = document.getElementById('link-grid');
+                data.socialLinks.forEach(link => {
+                    const linkItem = document.createElement('a');
+                    linkItem.href = link.url;
+                    linkItem.className = 'link-item';
+                    linkItem.title = link.title || ''; // Add hover text
+
+                    if (link.iconClass === 'custom-icon') {
+                        const iconImg = document.createElement('img');
+                        iconImg.src = link.iconPath;
+                        iconImg.alt = link.name;
+                        iconImg.className = 'custom-icon';
+                        linkItem.appendChild(iconImg);
+                    } else {
+                        const icon = document.createElement('i');
+                        icon.className = link.iconClass;
+                        linkItem.appendChild(icon);
+                    }
+                    linkGrid.appendChild(linkItem);
+                });
+            })
+            .catch(error => console.error('Error loading social links:', error));
+    </script>
+</body>
+</html>
