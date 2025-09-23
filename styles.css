@@ -1,9 +1,7 @@
 /* Body Styling */
 body {
-    background-color: #121212;
+    background: url("../docs/assets/images/pexels-francesco-ungaro-998641.jpg") no-repeat top center fixed;
     background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
     color: #fff;
     font-family: Arial, sans-serif;
     display: flex;
@@ -13,6 +11,7 @@ body {
     min-height: 100vh;
     margin: 0;
 }
+
 
 /* Container Layout */
 .container {
