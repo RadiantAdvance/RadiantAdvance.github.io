@@ -32,10 +32,10 @@
             "title": "Watch me on Twitch"
         },
         {
-            "name": "Soundcloud",
-            "url": "https://soundcloud.com/neonsomble",
-            "iconClass": "fab fa-soundcloud",
-            "title": "Follow me on Soundcloud"
+            "name": "Instagram",
+            "url": "https://www.instagram.com/real_neonsomble",
+            "iconClass": "fab fa-instagram",
+            "title": "Follow me on Instagram"
         }
     ]
 }
