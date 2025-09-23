@@ -4,38 +4,44 @@
             "name": "X",
             "url": "https://twitter.com/neonsomble",
             "iconClass": "fab fa-x-twitter",
-            "title": "Follow me on X"
+            "title": "Follow me on X",
+            "color": "#1DA1F2"
         },
-                {
+        {
             "name": "Bluesky",
             "url": "https://bsky.app/profile/neonsomble.com",
             "iconClass": "custom-icon",
             "iconPath": "../Icons/Bluesky.webp",
-            "title": "Follow me on Bluesky"
+            "title": "Follow me on Bluesky",
+            "color": "#0285FF"
         },
         {
             "name": "Mastodon",
             "url": "https://mograph.social/@neonsomble",
             "iconClass": "fab fa-mastodon",
-            "title": "Follow me on Mastodon"
+            "title": "Follow me on Mastodon",
+            "color": "#6364FF"
         },
         {
             "name": "YouTube",
             "url": "https://www.youtube.com/@Neonsomble",
             "iconClass": "fab fa-youtube",
-            "title": "Subscribe to my YouTube channel"
+            "title": "Subscribe to my YouTube channel",
+            "color": "#FF0000"
         },
         {
             "name": "Twitch",
             "url": "https://www.twitch.tv/neonsomble",
             "iconClass": "fab fa-twitch",
-            "title": "Watch me on Twitch"
+            "title": "Watch me on Twitch",
+            "color": "#9146FF"
         },
         {
             "name": "Instagram",
             "url": "https://www.instagram.com/real_neonsomble",
             "iconClass": "fab fa-instagram",
-            "title": "Follow me on Instagram"
+            "title": "Follow me on Instagram",
+            "color": "#E4405F"
         }
     ]
 }

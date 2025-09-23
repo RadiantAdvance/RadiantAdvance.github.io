@@ -14,8 +14,8 @@
     <meta name="author" content="Neonsomble">
     <meta property="og:title" content="Neonsomble Links">
     <meta property="og:description" content="Welcome to Neonsomble's link page. Connect with me on various platforms.">
-    <meta property="og:image" content="./profile.jpg"> <!-- Update with a relevant image URL -->
-    <meta property="og:url" content="./index.html"> <!-- Relative URL for GitHub Pages -->
+    <meta property="og:image" content="./profile.jpg">
+    <meta property="og:url" content="./index.html">
 
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -24,8 +24,8 @@
 
     <div class="container">
         <div class="profile-section">
-            <img src="../profile.webp" alt="Neonsomble Profile Picture" class="profile-pic">
-            <img src="../docs/assets/images/TypeLogo.png" alt="Neonsomble" class="type-logo">
+            <img src="./profile.webp" alt="Neonsomble Profile Picture" class="profile-pic">
+            <img src="./docs/assets/images/TypeLogo.png" alt="Neonsomble" class="type-logo">
             <p>Welcome to Neonsomble's link page. See what I'm up to.</p>
         </div>
         <nav>
@@ -42,6 +42,7 @@
         <p>&copy; 2025 Neonsomble. All rights reserved.</p>
         <p>Contact: <a href="mailto:contact@neonsomble.com">contact@neonsomble.com</a></p>
     </footer>
+
     <script>
         fetch('social_links.json')
             .then(response => response.json())
@@ -51,7 +52,20 @@
                     const linkItem = document.createElement('a');
                     linkItem.href = link.url;
                     linkItem.className = 'link-item';
-                    linkItem.title = link.title || ''; // Add hover text
+                    linkItem.title = link.title || '';
+
+                    // Apply custom background color if provided
+                    if (link.color) {
+                        linkItem.style.backgroundColor = link.color;
+
+                        // simple hover effect (brighten)
+                        linkItem.addEventListener('mouseenter', () => {
+                            linkItem.style.filter = 'brightness(1.2)';
+                        });
+                        linkItem.addEventListener('mouseleave', () => {
+                            linkItem.style.filter = 'brightness(1)';
+                        });
+                    }
 
                     if (link.iconClass === 'custom-icon') {
                         const iconImg = document.createElement('img');
@@ -64,6 +78,7 @@
                         icon.className = link.iconClass;
                         linkItem.appendChild(icon);
                     }
+
                     linkGrid.appendChild(linkItem);
                 });
             })
