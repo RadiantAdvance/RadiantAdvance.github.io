@@ -27,7 +27,14 @@
             <div class="profile-section">
                 <img src="./profile.webp" alt="Neonsomble Profile Picture" class="profile-pic">
                 <img src="./docs/assets/images/TypeLogo.png" alt="Neonsomble" class="type-logo">
-                <p>Welcome to Neonsomble's link page. See what I'm up to.</p>
+                
+                <div class="bio-text">
+                    <h2>Welcome to Neonsomble’s Link Page</h2>
+                    <p>
+                        I’m a <strong>2D/3D artist</strong>, <strong>animator</strong>, and <strong>VTuber</strong> who creates content on YouTube and streams on Twitch. 
+                        I also explore <strong>music production</strong> and whatever other new creative passion inspires me that day.
+                    </p>
+                </div>
             </div>
 
             <nav>
@@ -58,11 +65,8 @@
                     linkItem.className = 'link-item';
                     linkItem.title = link.title || '';
 
-                    // Apply custom background color if provided
                     if (link.color) {
                         linkItem.style.backgroundColor = link.color;
-
-                        // simple hover effect (brighten)
                         linkItem.addEventListener('mouseenter', () => {
                             linkItem.style.filter = 'brightness(1.2)';
                         });

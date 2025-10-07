@@ -14,12 +14,12 @@ body {
 
 /* Glassy Content Box */
 .content-box {
-    background: rgba(88, 88, 88, 0.353); /* Semi-transparent dark grey */
+    background: rgba(83, 85, 92, 0.353); /* Semi-transparent dark grey */
     backdrop-filter: blur(4px); /* Glass effect */
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.349); /* Soft shadow */
     padding: 40px 30px; /* Inner spacing */
-    max-width: 500px; /* Keep content compact */
+    max-width: 600px; /* Keep content compact */
     margin: 40px auto; /* Center with spacing from top/bottom */
     width: 90%; /* Responsive width */
 }
