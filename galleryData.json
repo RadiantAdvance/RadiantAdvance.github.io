@@ -6,12 +6,6 @@
             "items": [
                 {
                     "mediaType": "image",
-                    "src": "../docs/assets/images/art1.jpg",
-                    "alt": "2D Illustration 1",
-                    "link": "https://example.com/art2.jpg"
-                },
-                {
-                    "mediaType": "image",
                     "src": "../docs/assets/images/art2.jpg",
                     "alt": "2D Illustration 2",
                     "link": "https://example.com/2d_art2"
