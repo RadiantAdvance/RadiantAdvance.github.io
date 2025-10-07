@@ -14,8 +14,8 @@ body {
 
 /* Glassy Content Box */
 .content-box {
-    background: rgba(25, 25, 25, 0.6); /* Semi-transparent dark grey */
-    backdrop-filter: blur(10px); /* Glass effect */
+    background: rgba(25, 25, 25, 0.353); /* Semi-transparent dark grey */
+    backdrop-filter: blur(8px); /* Glass effect */
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Soft shadow */
     padding: 40px 30px; /* Inner spacing */
