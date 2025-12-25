@@ -1,7 +1,7 @@
 const portfolio = document.querySelector('.portfolio');
 const tabButtons = document.querySelector('.tab-buttons');
 const modal = document.getElementById('modal');
-const modalContent = document.getElementById('modalContent'); // New container for image/video
+const modalContent = document.getElementById('modalContent'); 
 const closeBtn = document.getElementById('close');
 
 let lastFocusedElement = null;
