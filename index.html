@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neonsomble — Portfolio & Links</title>
 
+    <meta name="description" content="Neonsomble — 2D & 3D artist, animator, and VTuber portfolio. View artwork and social links.">
+
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 
-    <!-- Google Font -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,109 +20,122 @@
 </head>
 <body>
 
-    <div class="container">
-        <div class="content-box">
+<div class="container">
+    <div class="content-box">
 
-            <!-- Profile Section -->
-            <header class="profile-section">
-                <div class="profile-media">
-                    <img src="./profile.webp" alt="Neonsomble avatar" class="profile-pic" loading="lazy">
-                    <img src="./docs/assets/images/TypeLogo.png" alt="Neonsomble logo" class="type-logo" loading="lazy">
-                </div>
-
-                <div class="bio-text">
-                    <h1>Neonsomble</h1>
-                    <p class="tagline">2D / 3D Artist • Animator • VTuber</p>
-                    <p>Explore my social links and art portfolio below.</p>
-                </div>
-            </header>
-
-            <!-- Navigation -->
-            <nav aria-label="Main Navigation">
-                <ul class="navbar">
-                    <li><a href="#links-section" class="active"><i class="fas fa-link"></i> Links</a></li>
-                    <li><a href="#portfolio-section"><i class="fas fa-image"></i> Portfolio</a></li>
-                </ul>
-            </nav>
-
-            <!-- Content Sections -->
-            <div class="sections-wrapper">
-
-                <!-- Social Links -->
-                <section id="links-section">
-                    <h3>Connect with me</h3>
-                    <div id="link-grid" class="link-grid"></div>
-                </section>
-
-                <!-- Portfolio -->
-                <section id="portfolio-section">
-                    <h3>Art Portfolio</h3>
-                    <div class="tab-buttons"></div>
-                    <main class="portfolio"></main>
-                </section>
-
+        <!-- Profile -->
+        <header class="profile-section">
+            <div class="profile-media">
+                <img src="./profile.webp" alt="Neonsomble avatar" class="profile-pic" loading="lazy">
+                <img src="./docs/assets/images/TypeLogo.png" alt="Neonsomble logo" class="type-logo" loading="lazy">
             </div>
 
-            <!-- Modal -->
-            <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
-                <span class="close" id="close" tabindex="0">&times;</span>
-                <img class="modal-content" id="modalImage" alt="">
+            <div class="bio-text">
+                <h1>Neonsomble</h1>
+                <p class="tagline">2D / 3D Artist • Animator • VTuber</p>
+                <p>Explore my social links and art portfolio below.</p>
             </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav aria-label="Main Navigation">
+            <ul class="navbar">
+                <li><a href="#links-section" class="active"><i class="fas fa-link"></i> Links</a></li>
+                <li><a href="#portfolio-section"><i class="fas fa-image"></i> Portfolio</a></li>
+            </ul>
+
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+
+        <!-- Sections -->
+        <div class="sections-wrapper">
+
+            <section id="links-section">
+                <h3>Connect with me</h3>
+                <div id="link-grid" class="link-grid"></div>
+            </section>
+
+            <section id="portfolio-section">
+                <h3>Art Portfolio</h3>
+                <div class="tab-buttons"></div>
+                <main class="portfolio"></main>
+            </section>
 
         </div>
+
+        <!-- Modal -->
+        <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <span class="close" id="close" tabindex="0">&times;</span>
+            <img class="modal-content" id="modalImage" alt="">
+        </div>
+
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 Neonsomble. All rights reserved.</p>
-        <p>Contact: <a href="mailto:contact@neonsomble.com">contact@neonsomble.com</a></p>
-    </footer>
+<footer class="footer">
+    <p>&copy; 2025 Neonsomble. All rights reserved.</p>
+    <p>Contact: <a href="mailto:contact@neonsomble.com">contact@neonsomble.com</a></p>
+</footer>
 
-    <!-- Social Links Script -->
-    <script>
-        fetch('social_links.json')
-            .then(response => response.json())
-            .then(data => {
-                const linkGrid = document.getElementById('link-grid');
+<!-- Social Links -->
+<script>
+fetch('social_links.json')
+    .then(res => res.json())
+    .then(data => {
+        const grid = document.getElementById('link-grid');
 
-                data.socialLinks.forEach(link => {
-                    const linkItem = document.createElement('a');
-                    linkItem.href = link.url;
-                    linkItem.className = 'link-item';
-                    linkItem.setAttribute('aria-label', link.title || link.name);
-                    linkItem.target = "_blank";
-                    linkItem.rel = "noopener noreferrer";
+        data.socialLinks.forEach(link => {
+            const a = document.createElement('a');
+            a.href = link.url;
+            a.className = 'link-item';
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.setAttribute('aria-label', link.name);
 
-                    if (link.color) {
-                        linkItem.style.setProperty('--link-color', link.color);
-                    }
+            if (link.color) {
+                a.style.setProperty('--link-color', link.color);
+            }
 
-                    let icon;
-                    if (link.iconClass === 'custom-icon') {
-                        icon = document.createElement('img');
-                        icon.src = link.iconPath;
-                        icon.alt = "";
-                        icon.className = 'custom-icon';
-                        icon.loading = 'lazy';
-                    } else {
-                        icon = document.createElement('i');
-                        icon.className = link.iconClass;
-                    }
+            let icon;
+            if (link.iconClass === 'custom-icon') {
+                icon = document.createElement('img');
+                icon.src = link.iconPath;
+                icon.className = 'custom-icon';
+                icon.loading = 'lazy';
+            } else {
+                icon = document.createElement('i');
+                icon.className = link.iconClass;
+            }
 
-                    const name = document.createElement('span');
-                    name.textContent = link.name;
+            const span = document.createElement('span');
+            span.textContent = link.name;
 
-                    linkItem.appendChild(icon);
-                    linkItem.appendChild(name);
+            a.append(icon, span);
+            grid.appendChild(a);
+        });
+    });
+</script>
 
-                    linkGrid.appendChild(linkItem);
-                });
-            })
-            .catch(err => console.error('Error loading social links:', err));
-    </script>
+<!-- Dark Mode Toggle -->
+<script>
+const toggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
 
-    <!-- Portfolio Script -->
-    <script src="imagegallery.js"></script>
+const saved = localStorage.getItem('theme');
+if (saved) root.setAttribute('data-theme', saved);
+
+toggle.addEventListener('click', () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+});
+</script>
+
+<!-- Portfolio -->
+<script src="imagegallery.js" defer></script>
 
 </body>
 </html>
