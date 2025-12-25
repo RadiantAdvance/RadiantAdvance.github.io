@@ -3,68 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neonsomble – Links & Portfolio</title>
+    <title>Neonsomble — Portfolio & Links</title>
 
-    <!-- Favicons -->
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 
-    <!-- Preload non‑critical resources -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-          as="style" onload="this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    </noscript>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Main stylesheet -->
+    <!-- Styles -->
     <link rel="stylesheet" href="./styles.css">
-
-    <!-- Preload JSON (optional) -->
-    <link rel="preload" href="social_links.json" as="fetch" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
-    <!-- Skip link for keyboard users -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <div class="container">
         <div class="content-box">
 
-            <!-- ==== PROFILE SECTION ==== -->
+            <!-- Profile Section -->
             <header class="profile-section">
-                <div class="profile-header">
-                    <!-- WebP with AVIF fallback -->
-                    <picture>
-                        <source srcset="./profile.avif" type="image/avif">
-                        <source srcset="./profile.webp" type="image/webp">
-                        <img src="./profile.jpg"
-                             alt="Neonsomble profile picture"
-                             class="profile-pic"
-                             loading="lazy">
-                    </picture>
-
-                    <picture>
-                        <source srcset="./docs/assets/images/TypeLogo.avif" type="image/avif">
-                        <source srcset="./docs/assets/images/TypeLogo.webp" type="image/webp">
-                        <img src="./docs/assets/images/TypeLogo.png"
-                             alt="Neonsomble logo"
-                             class="type-logo"
-                             loading="lazy">
-                    </picture>
+                <div class="profile-media">
+                    <img src="./profile.webp" alt="Neonsomble avatar" class="profile-pic" loading="lazy">
+                    <img src="./docs/assets/images/TypeLogo.png" alt="Neonsomble logo" class="type-logo" loading="lazy">
                 </div>
 
                 <div class="bio-text">
-                    <h1 class="site-title">Neonsomble – Portfolio</h1>
-                    <h2>Welcome to Neonsomble</h2>
-                    <p>
-                        I’m a <strong>2D/3D artist</strong>, <strong>animator</strong>,
-                        and <strong>VTuber</strong>. Explore my social links and art
-                        portfolio below!
-                    </p>
+                    <h1>Neonsomble</h1>
+                    <p class="tagline">2D / 3D Artist • Animator • VTuber</p>
+                    <p>Explore my social links and art portfolio below.</p>
                 </div>
             </header>
 
-            <!-- ==== NAVIGATION ==== -->
+            <!-- Navigation -->
             <nav aria-label="Main Navigation">
                 <ul class="navbar">
                     <li><a href="#links-section" class="active"><i class="fas fa-link"></i> Links</a></li>
@@ -72,130 +43,84 @@
                 </ul>
             </nav>
 
-            <!-- ==== CONTENT SECTIONS ==== -->
+            <!-- Content Sections -->
             <div class="sections-wrapper">
 
                 <!-- Social Links -->
-                <section id="links-section" class="section">
+                <section id="links-section">
                     <h3>Connect with me</h3>
                     <div id="link-grid" class="link-grid"></div>
                 </section>
 
                 <!-- Portfolio -->
-                <section id="portfolio-section" class="section">
+                <section id="portfolio-section">
                     <h3>Art Portfolio</h3>
-
-                    <div class="tab-buttons" role="tablist">
-                        <!-- Buttons will be injected by JS if needed -->
-                    </div>
-
-                    <main class="portfolio" id="main-content">
-                        <!-- Gallery will be injected by JS -->
-                    </main>
+                    <div class="tab-buttons"></div>
+                    <main class="portfolio"></main>
                 </section>
+
             </div>
 
-            <!-- ==== MODAL (lightbox) ==== -->
+            <!-- Modal -->
             <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
-                <button class="close" id="close" aria-label="Close">&times;</button>
+                <span class="close" id="close" tabindex="0">&times;</span>
                 <img class="modal-content" id="modalImage" alt="">
             </div>
 
         </div>
     </div>
 
-    <!-- ==== FOOTER ==== -->
+    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2025 Neonsomble. All rights reserved.</p>
         <p>Contact: <a href="mailto:contact@neonsomble.com">contact@neonsomble.com</a></p>
     </footer>
 
-    <!-- ==== SCRIPTS ==== -->
-    <script defer src="imagegallery.js"></script>
-    <script defer>
-        // --------------------------------------------------------------
-        // Load social links (with progressive enhancement)
-        // --------------------------------------------------------------
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('social_links.json')
-                .then(r => r.json())
-                .then(data => renderLinks(data.socialLinks))
-                .catch(err => console.error('Social links load error:', err));
-        });
+    <!-- Social Links Script -->
+    <script>
+        fetch('social_links.json')
+            .then(response => response.json())
+            .then(data => {
+                const linkGrid = document.getElementById('link-grid');
 
-        function renderLinks(links) {
-            const grid = document.getElementById('link-grid');
+                data.socialLinks.forEach(link => {
+                    const linkItem = document.createElement('a');
+                    linkItem.href = link.url;
+                    linkItem.className = 'link-item';
+                    linkItem.setAttribute('aria-label', link.title || link.name);
+                    linkItem.target = "_blank";
+                    linkItem.rel = "noopener noreferrer";
 
-            links.forEach(link => {
-                const a = document.createElement('a');
-                a.href = link.url;
-                a.className = 'link-item';
-                a.title = link.title || link.name;
-                a.setAttribute('aria-label', link.title || link.name);
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
+                    if (link.color) {
+                        linkItem.style.setProperty('--link-color', link.color);
+                    }
 
-                // Optional per‑card background colour (fallback to CSS variable)
-                if (link.color) {
-                    a.dataset.bg = link.color;               // CSS reads this via var()
-                }
+                    let icon;
+                    if (link.iconClass === 'custom-icon') {
+                        icon = document.createElement('img');
+                        icon.src = link.iconPath;
+                        icon.alt = "";
+                        icon.className = 'custom-icon';
+                        icon.loading = 'lazy';
+                    } else {
+                        icon = document.createElement('i');
+                        icon.className = link.iconClass;
+                    }
 
-                // Icon (FontAwesome or custom image)
-                let iconEl;
-                if (link.iconClass === 'custom-icon') {
-                    iconEl = document.createElement('img');
-                    iconEl.src = link.iconPath;
-                    iconEl.alt = link.name;
-                    iconEl.className = 'custom-icon';
-                    iconEl.loading = 'lazy';
-                } else {
-                    iconEl = document.createElement('i');
-                    iconEl.className = link.iconClass;
-                }
-                a.appendChild(iconEl);
+                    const name = document.createElement('span');
+                    name.textContent = link.name;
 
-                // Text label
-                const span = document.createElement('span');
-                span.textContent = link.name;
-                a.appendChild(span);
+                    linkItem.appendChild(icon);
+                    linkItem.appendChild(name);
 
-                // Fade‑in animation (CSS handles transition)
-                a.classList.add('visible');
-
-                grid.appendChild(a);
-            });
-        }
-
-        // --------------------------------------------------------------
-        // Modal focus handling (accessibility)
-        // --------------------------------------------------------------
-        const modal = document.getElementById('modal');
-        const modalImg = document.getElementById('modalImage');
-        const closeBtn = document.getElementById('close');
-        let lastFocused;
-
-        function openModal(src, alt = '') {
-            lastFocused = document.activeElement;
-            modalImg.src = src;
-            modalImg.alt = alt;
-            modal.style.display = 'flex';
-            modal.setAttribute('aria-hidden', 'false');
-            closeBtn.focus();
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-            modal.setAttribute('aria-hidden', 'true');
-            if (lastFocused) lastFocused.focus();
-        }
-
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // Expose for imagegallery.js (or call directly here)
-        window.openModal = openModal;
+                    linkGrid.appendChild(linkItem);
+                });
+            })
+            .catch(err => console.error('Error loading social links:', err));
     </script>
+
+    <!-- Portfolio Script -->
+    <script src="imagegallery.js"></script>
+
 </body>
 </html>
