@@ -1,164 +1,343 @@
-/* --- Base Styles --- */
+/* ==============================================================
+   1️⃣ Design Tokens (CSS Custom Properties)
+   ============================================================== */
+:root {
+    /* Typography */
+    --font-base: "Inter", system-ui, -apple-system, sans-serif;
+    --font-size-base: 1rem;
+    --line-height-base: 1.5;
+
+    /* Colours – adjust to match your branding */
+    --color-bg: #f5f6f8;
+    --color-surface: rgba(255, 255, 255, .85);
+    --color-primary: #0066ff;          /* Accent */
+    --color-primary-dark: #004db3;
+    --color-text: #222;
+    --color-muted: #555;
+    --color-footer-bg: #eaecef;
+    --color-link: var(--color-primary);
+}
+
+/* ==============================================================
+   2️⃣ Global Reset & Base Styles
+   ============================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    color: #222;
-    background-color: #f5f6f8;
+    font-family: var(--font-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background: var(--color-bg);
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
 }
 
+/* Skip link – visible on focus only */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: -999px;
+}
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    background: #fff;
+    padding: .5rem;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+/* ==============================================================
+   3️⃣ Layout Containers
+   ============================================================== */
 .container {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-/* --- Glassy Content Box --- */
 .content-box {
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(6px);
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 40px 30px;
+    background: var(--color-surface);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    padding: 2.5rem 2rem;
     max-width: 900px;
-    margin: 40px auto;
     width: 90%;
+    margin: 2rem auto;
 }
 
-/* --- Profile Section --- */
+/* ==============================================================
+   4️⃣ Header / Profile Section
+   ============================================================== */
 .profile-section {
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
 }
-
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .75rem;
+}
+@media (min-width: 600px) {
+    .profile-header { flex-direction: row; }
+    .profile-pic { margin-right: 1rem; }
+}
 .profile-pic {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    object-fit: cover;
 }
-
 .type-logo {
-    display: block;
     height: 2em;
-    margin: 10px auto 5px;
+}
+.site-title {
+    margin: .5rem 0;
+    font-size: 1.8rem;
+    color: var(--color-text);
 }
 
-h1, h2, h3, p {
-    margin: 5px 0;
+/* ==============================================================
+   5️⃣ Navigation Bar
+   ============================================================== */
+nav {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.navbar {
+    list-style: none;
+    display: inline-flex;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+.navbar a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 1.2rem;
+    padding-bottom: .25rem;
+    transition: color .3s, border-bottom .3s;
+}
+.navbar a.active {
+    border-bottom: 3px solid var(--color-primary);
+    color: var(--color-primary);
+}
+.navbar a:hover {
+    color: var(--color-primary-dark);
 }
 
-h1, h2 { color: #111; }
-p { color: #555; font-size: 1.1rem; }
-
-/* --- Navbar --- */
-nav { text-align: center; margin-bottom: 20px; }
-.navbar { list-style: none; display: inline-flex; gap: 2rem; padding: 0; }
-.navbar a { text-decoration: none; color: #222; padding-bottom: 5px; font-size: 1.2rem; transition: 0.3s; }
-.navbar a.active { border-bottom: 2px solid #222; }
-.navbar a:hover { text-shadow: 0 0 8px rgba(0,0,0,0.25); }
-
-/* --- Combined Sections Wrapper --- */
-.sections-wrapper { display: flex; flex-direction: column; gap: 30px; }
-
-/* Side-by-side on larger screens */
+/* ==============================================================
+   6️⃣ Sections Wrapper (responsive)
+   ============================================================== */
+.sections-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 @media (min-width: 900px) {
-    .sections-wrapper { flex-direction: row; align-items: flex-start; gap: 20px; }
-    #links-section, #portfolio-section { flex: 1; }
+    .sections-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    #links-section,
+    #portfolio-section {
+        flex: 1;
+    }
 }
 
-/* --- Social Links --- */
+/* ==============================================================
+   7️⃣ Social Links Grid
+   ============================================================== */
 .link-grid {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: .75rem;
 }
-
 .link-item {
     display: flex;
-    flex-direction: column; /* Icon above text */
-    justify-content: center;
-    align-items: center; /* Center horizontally */
-    gap: 10px; /* Space between icon and text */
-    padding: 15px 20px;
-    border-radius: 10px;
-    background-color: rgba(255,255,255,0.15);
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 1.5rem;
+    border-radius: .75rem;
+    background: var(--color-primary-dark);
+    color: #fff;
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 500;
-    color: #fff; /* White text */
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-    position: relative;
     text-align: center;
+    transition: transform .3s, box-shadow .3s, background .3s;
+    position: relative;
 }
 
+/* Per‑card background colour via data attribute */
+.link-item[data-bg] {
+    background: var(--bg, var(--color-primary-dark));
+}
+.link-item[data-bg]::before {
+    content: "";
+    background: var(--bg);
+    inset: 0;
+}
+
+/* Icon sizing */
 .link-item i,
 .link-item img.custom-icon {
-    color: #fff; /* White icons */
     width: 40px;
     height: 40px;
     font-size: 40px;
     object-fit: contain;
 }
 
-/* Hover effect */
-.link-item:hover {
+/* Hover / focus */
+.link-item:hover,
+.link-item:focus-visible {
     transform: scale(1.05);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-    background-color: rgba(255,255,255,0.25);
+    box-shadow: 0 6px 14px rgba(0,0,0,.18);
+    background: var(--color-primary);
 }
 
-/* Tooltip */
+/* Fade‑in animation (added via JS) */
+.link-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .5s ease, transform .5s ease;
+}
+.link-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tooltip (uses native title attr as fallback) */
 .link-item::after {
     content: attr(title);
     position: absolute;
-    bottom: 100%;
+    bottom: 110%;
     left: 50%;
     transform: translateX(-50%);
-    padding: 5px 10px;
     background: #fff;
-    color: #222;
-    border-radius: 5px;
+    color: var(--color-text);
+    padding: .35rem .6rem;
+    border-radius: .4rem;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    transition: opacity 0.2s ease-in-out;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    transition: opacity .2s;
+}
+.link-item:hover::after,
+.link-item:focus-visible::after {
+    opacity: 1;
 }
 
-.link-item:hover::after { opacity: 1; }
+/* ==============================================================
+   8️⃣ Portfolio Grid
+   ============================================================== */
+.portfolio .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.25rem;
+}
+.portfolio img {
+    width: 100%;
+    height: auto;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: transform .3s;
+}
+.portfolio img:hover {
+    transform: scale(1.05);
+}
 
-/* --- Portfolio --- */
-.portfolio .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 20px; }
-.portfolio img { width: 100%; height: auto; border-radius: 8px; cursor: pointer; transition: transform 0.3s; }
-.portfolio img:hover { transform: scale(1.05); }
-
-/* --- Modal --- */
+/* ==============================================================
+   9️⃣ Modal (lightbox)
+   ============================================================== */
 .modal {
-    display: none;
+    display: none;                 /* toggled via JS */
     position: fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background-color: rgba(255,255,255,0.9);
-    justify-content:center;
-    align-items:center;
-    z-index:1000;
+    inset: 0;
+    background: rgba(255,255,255,.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: .5rem;
+}
+.close {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-text);
+    cursor: pointer;
 }
 
-.modal-content { max-width:90%; max-height:90%; border-radius:8px; }
-
-/* --- Tabs --- */
-.tab-buttons { display:flex; justify-content:center; margin-bottom:1em; }
+/* ==============================================================
+   10️⃣ Tab Buttons (optional)
+   ============================================================== */
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
 .tab-buttons button {
-    padding:10px 20px; margin:0 5px;
-    border:1px solid #ccc; background:#eee; color:#222;
-    cursor:pointer; font-size:1rem;
+    padding: .6rem 1.2rem;
+    margin: 0 .3rem;
+    border: 1px solid #ccc;
+    background: #eee;
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: .3rem;
 }
-.tab-buttons button.active { background:#222; color:#fff; border:1px solid #222; }
+.tab-buttons button.active {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
 
-/* --- Footer --- */
-.footer { text-align:center; font-size:0.8rem; color:#666; padding:10px; }
-.footer a { color:#222; text-decoration:none; }
-.footer a:hover { text-decoration:underline; }
+/* ==============================================================
+   11️⃣ Footer
+   ============================================================== */
+.footer {
+    text-align: center;
+    font-size: .85rem;
+    color: #666;
+    background: var(--color-footer-bg);
+    padding: .75rem 1rem;
+    width: 100%;
+}
+.footer a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ==============================================================
+   12️⃣ Focus Outline (visible for keyboard navigation)
+   ============================================================== */
+a:focus,
+button:focus,
+.link-item:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
