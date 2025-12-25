@@ -135,6 +135,7 @@ nav {
     gap: 16px;
     max-width: 100%;
     overflow: hidden;
+    margin-top: 16px;
 }
 
 @media (min-width: 600px) {
@@ -169,6 +170,11 @@ nav {
     font-size: 40px;
     object-fit: contain;
     flex-shrink: 0;
+    display: block;
+}
+
+.link-item span {
+    margin-top: 8px;
 }
 
 .link-item:hover {
@@ -183,8 +189,10 @@ nav {
 
 .portfolio .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* smaller min size */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .portfolio figure {
@@ -216,17 +224,63 @@ nav {
     opacity: 1;
 }
 
+/* ---------- VIDEO SUPPORT ---------- */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    pointer-events: auto;
+}
+
+/* Hover overlay for video cards */
+.video-wrapper::after {
+    content: "▶";
+    position: absolute;
+    font-size: 3rem;
+    color: rgba(255,255,255,0.8);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
 /* ---------- MODAL ---------- */
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(255,255,255,.95);
+    background: rgba(0,0,0,.85);
     display: none;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
+    padding: 1rem;
 }
 
 .modal[aria-hidden="false"] { display: flex; }
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-content img,
+.modal-content iframe {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
 
 /* ---------- FOOTER ---------- */
 .footer {
