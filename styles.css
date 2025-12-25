@@ -19,10 +19,10 @@ body {
 
 /* --- Glassy Content Box --- */
 .content-box {
-    background: rgba(255,255,255,0.65);
+    background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(6px);
     border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 40px 30px;
     max-width: 900px;
     margin: 40px auto;
@@ -78,26 +78,39 @@ nav { text-align: center; margin-bottom: 20px; }
 
 .link-item {
     display: flex;
-    align-items: center;
-    gap: 15px;
+    flex-direction: column; /* Icon above text */
+    justify-content: center;
+    align-items: center; /* Center horizontally */
+    gap: 10px; /* Space between icon and text */
     padding: 15px 20px;
     border-radius: 10px;
-    background-color: rgba(255,255,255,0.85);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    background-color: rgba(255,255,255,0.15);
     text-decoration: none;
     font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff; /* White text */
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
     position: relative;
+    text-align: center;
 }
 
-.link-item i, .link-item img { width: 40px; height: 40px; flex-shrink: 0; object-fit: contain; font-size: 40px; color: #222; }
-.link-item span { font-weight: 500; }
+.link-item i,
+.link-item img.custom-icon {
+    color: #fff; /* White icons */
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    object-fit: contain;
+}
 
+/* Hover effect */
 .link-item:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+    background-color: rgba(255,255,255,0.25);
 }
 
+/* Tooltip */
 .link-item::after {
     content: attr(title);
     position: absolute;
