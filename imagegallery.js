@@ -1,105 +1,144 @@
-// Fetch gallery data
+const portfolio = document.querySelector('.portfolio');
+const tabButtons = document.querySelector('.tab-buttons');
+const modal = document.getElementById('modal');
+const modalImage = document.getElementById('modalImage');
+const closeBtn = document.getElementById('close');
+
+let lastFocusedElement = null;
+
+// ---------- FETCH DATA ----------
 fetch('galleryData.json')
     .then(res => res.json())
     .then(data => {
         renderTabs(data.galleries);
         renderGallery(data.galleries);
     })
-    .catch(err => {
-        console.error('Error loading gallery data:', err);
-        document.querySelector('.portfolio').innerHTML =
+    .catch(() => {
+        portfolio.innerHTML =
             '<p class="error">Artwork failed to load. Please try again later.</p>';
     });
 
-// Render category tabs
+// ---------- TABS ----------
 function renderTabs(galleries) {
-    const tabButtons = document.querySelector('.tab-buttons');
-    galleries.forEach((gallery, i) => {
+    galleries.forEach((gallery, index) => {
         const btn = document.createElement('button');
         btn.textContent = gallery.category;
-        btn.id = `tab-${gallery.category.toLowerCase().replace(/\s+/g, '-')}`;
-        btn.onclick = () => switchTab(gallery.category);
-        if (i === 0) btn.classList.add('active');
+        btn.dataset.target = gallery.category;
+        btn.classList.toggle('active', index === 0);
+
+        btn.addEventListener('click', () => switchTab(gallery.category));
         tabButtons.appendChild(btn);
     });
 }
 
-// Render gallery content
+// ---------- GALLERY ----------
 function renderGallery(galleries) {
-    const portfolio = document.querySelector('.portfolio');
-    galleries.forEach((gallery, i) => {
-        const contentDiv = document.createElement('div');
-        contentDiv.classList.add('tab-content');
-        contentDiv.id = `content-${gallery.category.toLowerCase().replace(/\s+/g, '-')}`;
-        contentDiv.style.display = i === 0 ? 'block' : 'none';
+    galleries.forEach((gallery, index) => {
+        const section = document.createElement('section');
+        section.className = 'tab-content';
+        section.dataset.category = gallery.category;
+        section.hidden = index !== 0;
 
         const grid = document.createElement('div');
-        grid.classList.add(gallery.displayMode);
+        grid.className = gallery.displayMode;
 
         gallery.items.forEach(item => {
             if (item.mediaType === 'image') {
-                const img = document.createElement('img');
-                img.src = item.src;
-                img.alt = item.alt || gallery.category;
-                img.classList.add('thumbnail');
-                img.loading = 'lazy';
-                img.onclick = () => openModal(item.src);
-                grid.appendChild(img);
+                grid.appendChild(createImageCard(item, gallery.category));
             } else if (item.mediaType === 'video') {
-                const iframe = document.createElement('iframe');
-                iframe.src = item.videoUrl;
-                iframe.width = "100%";
-                iframe.height = "315";
-                iframe.frameBorder = "0";
-                iframe.allowFullscreen = true;
-                grid.appendChild(iframe);
+                grid.appendChild(createVideoEmbed(item));
             } else if (item.mediaType === 'audio') {
-                const audio = document.createElement('iframe');
-                audio.src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(item.trackUrl)}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=true`;
-                audio.width = "100%";
-                audio.height = "166";
-                audio.frameBorder = "no";
-                audio.scrolling = "no";
-                grid.appendChild(audio);
+                grid.appendChild(createAudioEmbed(item));
             }
         });
 
-        contentDiv.appendChild(grid);
-        portfolio.appendChild(contentDiv);
+        section.appendChild(grid);
+        portfolio.appendChild(section);
     });
 }
 
-// Switch tabs
+// ---------- IMAGE CARD ----------
+function createImageCard(item, fallbackAlt) {
+    const figure = document.createElement('figure');
+    figure.tabIndex = 0;
+
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = item.alt || fallbackAlt;
+    img.loading = 'lazy';
+
+    const caption = document.createElement('figcaption');
+    caption.textContent = item.title || '';
+
+    figure.appendChild(img);
+    if (item.title) figure.appendChild(caption);
+
+    figure.addEventListener('click', () => openModal(item.src));
+    figure.addEventListener('keydown', e => {
+        if (e.key === 'Enter') openModal(item.src);
+    });
+
+    return figure;
+}
+
+// ---------- VIDEO ----------
+function createVideoEmbed(item) {
+    const iframe = document.createElement('iframe');
+    iframe.src = item.videoUrl;
+    iframe.loading = 'lazy';
+    iframe.allowFullscreen = true;
+    iframe.title = item.title || 'Video artwork';
+    return iframe;
+}
+
+// ---------- AUDIO ----------
+function createAudioEmbed(item) {
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(item.trackUrl)}&auto_play=false&hide_related=true`;
+    iframe.loading = 'lazy';
+    iframe.title = item.title || 'Audio artwork';
+    return iframe;
+}
+
+// ---------- TAB SWITCH ----------
 function switchTab(category) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.style.display = tab.id === `content-${category.toLowerCase().replace(/\s+/g, '-')}` ? 'block' : 'none';
+    document.querySelectorAll('.tab-content').forEach(section => {
+        section.hidden = section.dataset.category !== category;
     });
+
     document.querySelectorAll('.tab-buttons button').forEach(btn => {
-        btn.classList.toggle('active', btn.id === `tab-${category.toLowerCase().replace(/\s+/g, '-')}`);
+        btn.classList.toggle('active', btn.dataset.target === category);
     });
 }
 
-// Modal
+// ---------- MODAL ----------
 function openModal(src) {
-    const modal = document.getElementById('modal');
-    const modalImage = document.getElementById('modalImage');
-    modal.style.display = 'flex';
+    lastFocusedElement = document.activeElement;
+
     modalImage.src = src;
+    modal.setAttribute('aria-hidden', 'false');
+    modal.style.display = 'flex';
+    closeBtn.focus();
+
     document.body.classList.add('modal-open');
-
-    const closeBtn = document.getElementById('close');
-    closeBtn.onclick = () => closeModal();
-    modal.onclick = e => { if (e.target == modal) closeModal(); };
-
     document.addEventListener('keydown', escHandler);
 }
 
 function closeModal() {
-    const modal = document.getElementById('modal');
     modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    modalImage.src = '';
+
     document.body.classList.remove('modal-open');
     document.removeEventListener('keydown', escHandler);
+
+    if (lastFocusedElement) lastFocusedElement.focus();
 }
+
+closeBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+});
 
 function escHandler(e) {
     if (e.key === 'Escape') closeModal();
