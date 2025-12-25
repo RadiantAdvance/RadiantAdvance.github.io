@@ -1,7 +1,8 @@
 /* Body Styling */
 body {
-    color: #222;
-    background-color: #f5f6f8;
+    background: url("../docs/assets/images/pexels-francesco-ungaro-998641.jpg") no-repeat top center fixed;
+    background-size: cover;
+    color: #fff;
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -13,15 +14,16 @@ body {
 
 /* Glassy Content Box */
 .content-box {
-    background: rgba(255, 255, 255, 0.65); /* Semi-transparent white */
-    backdrop-filter: blur(6px);
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 40px 30px;
-    max-width: 600px;
-    margin: 40px auto;
-    width: 90%;
+    background: rgba(83, 85, 92, 0.353); /* Semi-transparent dark grey */
+    backdrop-filter: blur(4px); /* Glass effect */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.349); /* Soft shadow */
+    padding: 40px 30px; /* Inner spacing */
+    max-width: 600px; /* Keep content compact */
+    margin: 40px auto; /* Center with spacing from top/bottom */
+    width: 90%; /* Responsive width */
 }
+
 
 /* Container Layout */
 .container {
@@ -41,58 +43,55 @@ body {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 0;
+    border: 0px solid #fff;
 }
 
 h1 {
     font-size: 2em;
     margin: 10px 0 5px;
-    color: #111;
 }
 
 p {
     font-size: 1.2em;
     margin: 0;
-    color: #555;
 }
 
 /* Social Links Grid */
 .link-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive grid */
     gap: 15px;
     margin-top: 30px;
-    padding: 0 20px;
+    padding: 0 20px; /* Add some padding for better spacing */
 }
 
 .link-item {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(30, 30, 30, 0.8); /* Darker, semi-transparent background */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    text-decoration: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Slight shadow for better contrast */
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none; /* Remove underline */
     position: relative;
 }
 
 .link-item i {
-    font-size: 40px;
-    color: #222;
+    font-size: 40px; /* Icon size */
+    color: #fff; /* Icon color */
 }
 
 .link-item img {
-    width: 40px;
+    width: 40px; /* Set image size for custom icons */
     height: 40px;
     object-fit: contain;
 }
 
 .link-item:hover {
-    background-color: rgba(245, 245, 245, 1);
+    background-color: rgba(50, 50, 50, 0.9); /* Slightly lighter background on hover */
     transform: scale(1.05);
-    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.18);
 }
 
 /* Tooltip Styling */
@@ -102,14 +101,13 @@ p {
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
-    color: #222;
+    background-color: #333; /* Dark grey background */
+    color: #fff; /* White text */
     padding: 5px 10px;
     border-radius: 5px;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     transition: opacity 0.2s ease-in-out;
 }
 
@@ -122,8 +120,7 @@ p {
     padding: 10px;
     text-align: center;
     width: 100%;
-    font-size: 0.6em;
-    color: #666;
+    font-size: 0.6em; /* Smaller text size */
 }
 
 .footer p {
@@ -131,7 +128,7 @@ p {
 }
 
 .footer a {
-    color: #222;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -144,9 +141,9 @@ p {
     width: 90%;
     max-width: 1200px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(18, 18, 18, 0.10); /* Dark overlay for readability */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Example styles for grid, list, and carousel layouts */
@@ -187,7 +184,7 @@ p {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
 }
@@ -211,29 +208,30 @@ nav {
 }
 
 .navbar a {
-    text-decoration: none;
-    color: #222;
-    padding-bottom: 5px;
-    transition: border-bottom 0.3s;
+    text-decoration: none; /* Remove default underline */
+    color: inherit; /* Keep link color as is */
+    padding-bottom: 5px; /* Space for the custom underline */
+    transition: border-bottom 0.3s; /* Smooth transition */
 }
 
 .navbar li a {
     font-size: 1.2rem;
+    transition: text-shadow 0.3s ease;
 }
 
 .navbar li a:hover {
-    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.9);
 }
 
 .navbar a.active {
-    border-bottom: 2px solid #222;
+    border-bottom: 2px solid white; /* White underline for active page */
 }
 
 /* Type Logo */
 .type-logo {
     display: block;
-    height: 2em;
-    margin: 10px auto 5px;
+    height: 2em; /* Similar to font-size for h1 */
+    margin: 10px auto 5px; /* Center and add spacing */
     width: auto;
 }
 
@@ -248,39 +246,39 @@ nav {
     padding: 10px 20px;
     margin: 0 5px;
     border: 1px solid #ccc;
-    background-color: #eee;
-    color: #222;
+    background-color: #000; /* Inactive state background */
+    color: #fff; /* Inactive state text color */
     cursor: pointer;
     font-size: 16px;
 }
 
 .tab-buttons button.active {
-    background-color: #222;
-    color: #fff;
-    border: 1px solid #222;
+    background-color: #fff; /* Active state background */
+    color: #000; /* Active state text color */
+    border: 1px solid #000; /* Active state border */
 }
 
 /* Music Gallery Styling */
 .music-grid {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column; /* Stack the items vertically */
+    align-items: center;    /* Center the items horizontally */
+    gap: 20px;              /* Add space between items */
     justify-content: center;
     margin: 0;
-    width: 100%;
+    width: 100%;            /* Ensure the grid takes up full width */
 }
 
 /* SoundCloud Iframe Wrapper Styling */
 .soundcloud-iframe-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px 0;
-    text-align: center;
+    width: 100%;            /* Ensure wrapper takes up full width */
+    max-width: 1200px;      /* Control maximum width for each embed */
+    margin: 20px 0;         /* Add spacing between embeds */
+    text-align: center;     /* Center the iframe inside the wrapper */
 }
 
 .soundcloud-iframe-wrapper iframe {
-    width: 100%;
-    height: 200px;
-    border: none;
+    width: 100%;            /* Full width of the wrapper */
+    height: 200px;          /* Set a consistent height */
+    border: none;           /* No border for iframe */
 }
