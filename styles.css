@@ -114,16 +114,17 @@ nav {
     cursor: pointer;
 }
 
-/* ---------- SECTIONS ---------- */
+/* ---------- SECTIONS STACKED ---------- */
 .sections-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* stack vertically mobile-first */
     gap: 32px;
 }
 
+/* Remove side-by-side on larger screens */
 @media (min-width: 900px) {
     .sections-wrapper {
-        flex-direction: row;
+        flex-direction: column; /* keep stacking vertically */
     }
 }
 
@@ -176,10 +177,14 @@ nav {
 }
 
 /* ---------- PORTFOLIO ---------- */
+#portfolio-section {
+    margin-top: 16px;
+}
+
 .portfolio .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* smaller min size */
+    gap: 16px;
 }
 
 .portfolio figure {
@@ -190,7 +195,9 @@ nav {
 
 .portfolio img {
     width: 100%;
+    height: auto;
     display: block;
+    object-fit: cover;
 }
 
 .portfolio figcaption {
