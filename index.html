@@ -5,75 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neonsomble - Links & Portfolio</title>
 
-    <!-- Favicon -->
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Welcome to Neonsomble's page. Connect with me on social media and explore my art portfolio.">
-    <meta name="keywords" content="Neonsomble, social media, links, portfolio, art, animation, YouTube, Twitch, Instagram">
-    <meta name="author" content="Neonsomble">
-    
-    <meta property="og:title" content="Neonsomble Links & Portfolio">
-    <meta property="og:description" content="Connect with me and explore my creative work.">
-    <meta property="og:image" content="./profile.webp">
-    <meta property="og:url" content="./index.html">
-
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <!-- Profile Section -->
-        <header class="profile-section">
-            <img src="./profile.webp" alt="Neonsomble Profile Picture" class="profile-pic" loading="lazy">
-            <img src="./docs/assets/images/TypeLogo.png" alt="Neonsomble Logo" class="type-logo" loading="lazy">
-            <div class="bio-text">
-                <h2>Welcome to Neonsomble</h2>
-                <p>
-                    I’m a <strong>2D/3D artist</strong>, <strong>animator</strong>, and <strong>VTuber</strong> who creates content on YouTube and streams on Twitch. 
-                    I also explore <strong>music production</strong> and other creative endeavors that inspire me daily.
-                </p>
+        <div class="content-box">
+
+            <!-- Profile Section -->
+            <header class="profile-section">
+                <img src="./profile.webp" alt="Neonsomble Profile Picture" class="profile-pic" loading="lazy">
+                <img src="./docs/assets/images/TypeLogo.png" alt="Neonsomble Logo" class="type-logo" loading="lazy">
+                <div class="bio-text">
+                    <h2>Welcome to Neonsomble</h2>
+                    <p>
+                        I’m a <strong>2D/3D artist</strong>, <strong>animator</strong>, and <strong>VTuber</strong>. 
+                        Explore my social links and art portfolio below!
+                    </p>
+                </div>
+            </header>
+
+            <!-- Navigation -->
+            <nav aria-label="Main Navigation">
+                <ul class="navbar">
+                    <li><a href="#links-section" class="active"><i class="fas fa-link"></i> Links</a></li>
+                    <li><a href="#portfolio-section"><i class="fas fa-image"></i> Portfolio</a></li>
+                </ul>
+            </nav>
+
+            <!-- Combined Sections Wrapper -->
+            <div class="sections-wrapper">
+
+                <!-- Social Links Section -->
+                <section id="links-section">
+                    <h3>Connect with me</h3>
+                    <div id="link-grid" class="link-grid"></div>
+                </section>
+
+                <!-- Portfolio Section -->
+                <section id="portfolio-section">
+                    <h3>Art Portfolio</h3>
+                    <div class="tab-buttons">
+                        <!-- Tabs dynamically added by JS if needed -->
+                    </div>
+                    <main class="portfolio">
+                        <!-- Gallery content dynamically added by JS -->
+                    </main>
+                </section>
+
             </div>
-        </header>
 
-        <!-- Navigation -->
-        <nav aria-label="Main Navigation">
-            <ul class="navbar">
-                <li><a href="#links-section" class="active"><i class="fas fa-link"></i> Links</a></li>
-                <li><a href="#portfolio-section"><i class="fas fa-image"></i> Portfolio</a></li>
-            </ul>
-        </nav>
-
-        <!-- Links Section -->
-        <section id="links-section">
-            <h3>Connect with me</h3>
-            <div id="link-grid" class="link-grid"></div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio-section">
-            <h3>Art Portfolio</h3>
-            <div class="tab-buttons">
-                <!-- Tabs dynamically added by JS if needed -->
-            </div>
-            <main class="portfolio">
-                <!-- Gallery content dynamically added by JS -->
-            </main>
-
-            <!-- Modal for Image Preview -->
+            <!-- Modal for Portfolio Images -->
             <div class="modal" id="modal" role="dialog" aria-modal="true">
                 <span class="close" id="close">&times;</span>
                 <img class="modal-content" id="modalImage">
             </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p>&copy; 2025 Neonsomble. All rights reserved.</p>
-            <p>Contact: <a href="mailto:contact@neonsomble.com">contact@neonsomble.com</a></p>
-        </footer>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Neonsomble. All rights reserved.</p>
+        <p>Contact: <a href="mailto:contact@neonsomble.com">contact@neonsomble.com</a></p>
+    </footer>
 
     <!-- Scripts -->
     <script>
