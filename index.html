@@ -77,8 +77,8 @@
                         linkItem.style.backgroundColor = link.color;
                         linkItem.addEventListener('mouseenter', () => {
                             linkItem.style.filter = 'brightness(1.2)';
-                            linkItem.style.transform = 'scale(1.1)';
-                            linkItem.style.boxShadow = `0 0 20px ${link.color}`;
+                            linkItem.style.transform = 'scale(1.05)';
+                            linkItem.style.boxShadow = `0 0 15px ${link.color}`;
                         });
                         linkItem.addEventListener('mouseleave', () => {
                             linkItem.style.filter = 'brightness(1)';
@@ -88,18 +88,23 @@
                     }
 
                     // Icon
+                    let iconElement;
                     if (link.iconClass === 'custom-icon') {
-                        const iconImg = document.createElement('img');
-                        iconImg.src = link.iconPath;
-                        iconImg.alt = link.name;
-                        iconImg.className = 'custom-icon';
-                        iconImg.loading = 'lazy';
-                        linkItem.appendChild(iconImg);
+                        iconElement = document.createElement('img');
+                        iconElement.src = link.iconPath;
+                        iconElement.alt = link.name;
+                        iconElement.className = 'custom-icon';
+                        iconElement.loading = 'lazy';
                     } else {
-                        const icon = document.createElement('i');
-                        icon.className = link.iconClass;
-                        linkItem.appendChild(icon);
+                        iconElement = document.createElement('i');
+                        iconElement.className = link.iconClass;
                     }
+                    linkItem.appendChild(iconElement);
+
+                    // Add platform name
+                    const nameSpan = document.createElement('span');
+                    nameSpan.textContent = link.name;
+                    linkItem.appendChild(nameSpan);
 
                     // Fade-in animation
                     linkItem.style.opacity = 0;

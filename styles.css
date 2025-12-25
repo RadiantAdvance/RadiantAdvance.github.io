@@ -13,7 +13,7 @@ body {
 
 /* Glassy Content Box */
 .content-box {
-    background: rgba(255, 255, 255, 0.65); /* Semi-transparent white */
+    background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(6px);
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -59,18 +59,18 @@ p {
 /* Social Links List (Vertical) */
 .link-grid {
     display: flex;
-    flex-direction: column; /* stack vertically */
-    gap: 15px; /* spacing between links */
+    flex-direction: column;
+    gap: 15px;
     margin-top: 30px;
     padding: 0 20px;
-    align-items: stretch; /* make links full width */
+    align-items: stretch;
 }
 
 .link-item {
     display: flex;
-    justify-content: flex-start; /* align icon + label to left */
+    justify-content: flex-start;
     align-items: center;
-    width: 100%; /* full width */
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.85);
     padding: 15px 20px;
     border-radius: 10px;
@@ -78,28 +78,27 @@ p {
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     text-decoration: none;
     position: relative;
-    gap: 15px; /* space between icon and text */
+    gap: 15px;
     font-size: 1.1rem;
 }
 
-.link-item i {
-    font-size: 40px;
-    color: #222;
-    flex-shrink: 0;
-}
-
+/* Merge icon and image styling */
+.link-item i,
 .link-item img {
     width: 40px;
     height: 40px;
     object-fit: contain;
     flex-shrink: 0;
-}
-
-.link-item span {
-    font-weight: 500; /* label text */
+    font-size: 40px;
     color: #222;
 }
 
+.link-item span {
+    font-weight: 500;
+    color: #222;
+}
+
+/* Hover effect */
 .link-item:hover {
     background-color: rgba(245, 245, 245, 1);
     transform: scale(1.05);
