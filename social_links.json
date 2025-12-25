@@ -11,7 +11,7 @@
             "name": "Bluesky",
             "url": "https://bsky.app/profile/neonsomble.com",
             "iconClass": "custom-icon",
-            "iconPath": "../Icons/Bluesky.webp",
+            "iconPath": "./Icons/Bluesky.webp",
             "title": "Follow me on Bluesky",
             "color": "#0285FF"
         },

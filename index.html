@@ -14,9 +14,10 @@
     <meta name="author" content="Neonsomble">
     <meta property="og:title" content="Neonsomble Links">
     <meta property="og:description" content="Welcome to Neonsomble's link page. Connect with me on various platforms.">
-    <meta property="og:image" content="./profile.jpg">
+    <meta property="og:image" content="./profile.webp">
     <meta property="og:url" content="./index.html">
 
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -24,36 +25,39 @@
 
     <div class="container">
         <div class="content-box">
+            <!-- Profile Section -->
             <div class="profile-section">
-                <img src="./profile.webp" alt="Neonsomble Profile Picture" class="profile-pic">
-                <img src="./docs/assets/images/TypeLogo.png" alt="Neonsomble" class="type-logo">
+                <img src="./profile.webp" alt="Profile picture of Neonsomble" class="profile-pic" loading="lazy">
+                <img src="./docs/assets/images/TypeLogo.png" alt="Neonsomble Logo" class="type-logo" loading="lazy">
                 
                 <div class="bio-text">
                     <h2>Welcome to Neonsomble’s Link Page</h2>
                     <p>
                         I’m a <strong>2D/3D artist</strong>, <strong>animator</strong>, and <strong>VTuber</strong> who creates content on YouTube and streams on Twitch. 
-                        I also explore <strong>music production</strong> and whatever other new creative endeavour inspires me that day.
+                        I also explore <strong>music production</strong> and other creative endeavors that inspire me daily.
                     </p>
                 </div>
             </div>
 
-            <nav>
+            <!-- Navigation -->
+            <nav aria-label="Main Navigation">
                 <ul class="navbar">
                     <li><a href="index.html" class="active"><i class="fas fa-link"></i> Links</a></li>
                 </ul>
             </nav>        
 
-            <div id="link-grid" class="link-grid">
-                <!-- Social Icons will be inserted here by JavaScript -->
-            </div>
+            <!-- Links Grid -->
+            <div id="link-grid" class="link-grid"></div>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2025 Neonsomble. All rights reserved.</p>
         <p>Contact: <a href="mailto:contact@neonsomble.com">contact@neonsomble.com</a></p>
     </footer>
 
+    <!-- Scripts -->
     <script>
         fetch('social_links.json')
             .then(response => response.json())
@@ -63,29 +67,48 @@
                     const linkItem = document.createElement('a');
                     linkItem.href = link.url;
                     linkItem.className = 'link-item';
-                    linkItem.title = link.title || '';
+                    linkItem.title = link.title || link.name;
+                    linkItem.setAttribute('aria-label', link.title || link.name);
+                    linkItem.target = "_blank";
+                    linkItem.rel = "noopener noreferrer";
 
+                    // Style and hover
                     if (link.color) {
                         linkItem.style.backgroundColor = link.color;
                         linkItem.addEventListener('mouseenter', () => {
                             linkItem.style.filter = 'brightness(1.2)';
+                            linkItem.style.transform = 'scale(1.1)';
+                            linkItem.style.boxShadow = `0 0 20px ${link.color}`;
                         });
                         linkItem.addEventListener('mouseleave', () => {
                             linkItem.style.filter = 'brightness(1)';
+                            linkItem.style.transform = 'scale(1)';
+                            linkItem.style.boxShadow = 'none';
                         });
                     }
 
+                    // Icon
                     if (link.iconClass === 'custom-icon') {
                         const iconImg = document.createElement('img');
                         iconImg.src = link.iconPath;
                         iconImg.alt = link.name;
                         iconImg.className = 'custom-icon';
+                        iconImg.loading = 'lazy';
                         linkItem.appendChild(iconImg);
                     } else {
                         const icon = document.createElement('i');
                         icon.className = link.iconClass;
                         linkItem.appendChild(icon);
                     }
+
+                    // Fade-in animation
+                    linkItem.style.opacity = 0;
+                    linkItem.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        linkItem.style.transition = 'opacity 0.5s, transform 0.5s';
+                        linkItem.style.opacity = 1;
+                        linkItem.style.transform = 'translateY(0)';
+                    }, 50);
 
                     linkGrid.appendChild(linkItem);
                 });
